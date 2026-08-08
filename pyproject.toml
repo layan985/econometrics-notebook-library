@@ -22,6 +22,9 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest>=7.4"]
 
+[tool.setuptools]
+packages = ["econnotes"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
