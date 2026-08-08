@@ -1,0 +1,33 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Econometrics Notebook Library"
+  navbar:
+    left:
+      - href: README.md
+        text: Home
+      - text: DiD & Event Studies
+        menu:
+          - notebooks/00_staggered_did_failure_lab.ipynb
+          - notebooks/01_sun_abraham_event_studies.ipynb
+          - notebooks/02_callaway_santanna_did.ipynb
+          - notebooks/03_borusyak_jaravel_spiess.ipynb
+      - text: Inference & Designs
+        menu:
+          - notebooks/04_wild_cluster_bootstrap.ipynb
+          - notebooks/05_conley_standard_errors.ipynb
+          - notebooks/06_shift_share_designs.ipynb
+          - notebooks/07_synthetic_control.ipynb
+          - notebooks/08_randomization_inference.ipynb
+          - notebooks/09_local_projections.ipynb
+
+format:
+  html:
+    toc: true
+    code-fold: false
+    code-tools: true
+    theme: cosmo
+execute:
+  enabled: false
