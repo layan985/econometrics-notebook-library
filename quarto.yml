@@ -22,6 +22,16 @@ website:
           - notebooks/07_synthetic_control.ipynb
           - notebooks/08_randomization_inference.ipynb
           - notebooks/09_local_projections.ipynb
+      - href: REPRODUCIBILITY.md
+        text: Reproduce
+      - href: VALIDATION.md
+        text: Validation
+      - href: CONTRIBUTING.md
+        text: Contribute
+    right:
+      - icon: github
+        href: https://github.com/layan985/econometrics-notebook-library
+        aria-label: GitHub
 
 format:
   html:
