@@ -5,7 +5,7 @@
 
 **Research-grade computational notes on modern applied econometrics.**
 
-**Author:** **Layan Oraidi** (also appearing in some award and academic records as **Layan Aloreidi**) · ORCID: https://orcid.org/0009-0005-0202-2582
+**Author:** **Layan Aloreidi** (also indexed in some award and academic records as **Layan Oraidi**) · ORCID: https://orcid.org/0009-0005-0202-2582
 
 This is not a beginner tutorial repository. Each notebook follows the same discipline:
 
