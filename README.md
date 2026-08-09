@@ -31,11 +31,11 @@ The goal is to make modern empirical methods inspectable from first principles r
 
 Every note starts by defining the causal/statistical object being estimated. Software syntax appears only after the identification and aggregation choices are explicit.
 
-### From-scratch reference implementations
+### Transparent implementations with package validation
 
-`econnotes/` contains compact implementations of the main algebra used in the simulations: interaction-weighted event studies, group-time doubly robust scores, imputation DiD, null-imposed wild-cluster bootstrap-t, spatial HAC covariance, shift-share/shock-level IV equivalence, simplex-constrained synthetic control, Fisher randomization inference, and Jordà local projections.
+`econnotes/` contains compact implementations of the main algebra used in the simulations: interaction-weighted event studies, group-time doubly robust scores, null-imposed wild-cluster bootstrap-t, spatial HAC covariance, shift-share/shock-level IV equivalence, simplex-constrained synthetic control, Fisher randomization inference, and Jordà local projections. The BJS notebook is deliberately different: it uses the maintained `did-imputation` package for reported estimates and uncertainty, while reproducing the point-estimator mechanics directly in visible notebook cells.
 
-The stable public API is `econnotes.core`; the implementation is organized internally by method family for inspectability. These are **reference implementations, not replacements for production econometrics packages** for publication-grade inference.
+The stable public API is `econnotes.core`; the implementation is organized internally by method family for inspectability. The compact routines are **reference implementations, not replacements for production econometrics packages** for publication-grade inference.
 
 ### Failure simulations
 
@@ -79,6 +79,7 @@ The test suite checks identities and design properties rather than only checking
 - synthetic-control weights remain on the simplex and reproduce an exact convex combination;
 - Conley covariance is symmetric with nonnegative diagonal entries in the simulation;
 - randomization inference assigns a larger p-value to the true constant additive sharp null than to a false zero-effect null;
+- the maintained BJS Python implementation matches the notebook's visible three-step point-estimator reconstruction to numerical tolerance;
 - BJS and Callaway–Sant'Anna simulations recover positive, increasing treatment effects;
 - local projections recover the sign and short-horizon magnitude of a known impulse response.
 
