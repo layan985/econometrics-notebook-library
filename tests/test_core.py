@@ -1,9 +1,10 @@
 import numpy as np
 import statsmodels.api as sm
+import statsmodels.formula.api as smf
+from did_imputation import did_imputation
 
 from econnotes.core import (
     aggregate_att_event,
-    bjs_imputation,
     conley_covariance,
     cs_att_gt,
     effective_number_of_shocks,
@@ -54,11 +55,32 @@ def test_randomization_inference_rejects_wrong_sharp_null():
     assert out0["p_value"] < out1["p_value"]
 
 
-def test_bjs_recovers_positive_effect_path():
+def test_bjs_package_matches_visible_point_estimator():
     df = simulate_staggered_panel(n_units=160, seed=12)
-    est, _ = bjs_imputation(df)
-    assert est.loc[est.event_time == 0, "estimate"].iloc[0] > 0.3
-    assert est.loc[est.event_time == 2, "estimate"].iloc[0] > est.loc[est.event_time == 0, "estimate"].iloc[0]
+    untreated = df["treated"].eq(0)
+    fit_y0 = smf.ols("y ~ C(unit) + C(time)", data=df.loc[untreated]).fit()
+    df["tau_hat"] = df["y"] - fit_y0.predict(df)
+    manual = df.loc[df["treated"].eq(1)].groupby("event_time")["tau_hat"].mean()
+
+    df["first_treat"] = df["cohort"].replace(np.inf, np.nan)
+    package = did_imputation(
+        df,
+        "y",
+        "unit",
+        "time",
+        "first_treat",
+        allhorizons=True,
+        minn=0,
+        nose=True,
+    )
+    estimates = {
+        int(name.removeprefix("tau")): float(value)
+        for name, value in package.estimates.items()
+    }
+
+    assert max(abs(manual.loc[h] - value) for h, value in estimates.items()) < 1e-6
+    assert estimates[0] > 0.3
+    assert estimates[2] > estimates[0]
 
 
 def test_cs_att_positive():

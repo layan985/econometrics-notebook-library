@@ -143,17 +143,3 @@ def aggregate_att_event(att_gt: pd.DataFrame) -> pd.DataFrame:
         se = float(np.sqrt(np.sum((w * sub['se'].to_numpy()) ** 2)))
         rows.append({'event_time': int(e), 'estimate': est, 'se': se, 'method': "Callaway-Sant'Anna DR"})
     return pd.DataFrame(rows).sort_values('event_time')
-
-def bjs_imputation(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Borusyak-Jaravel-Spiess imputation estimator for a simple panel FE model."""
-    d = df.copy()
-    untreated = d['treated'] == 0
-    fit = smf.ols('y ~ C(unit) + C(time) + x', data=d.loc[untreated]).fit()
-    d['y0_hat'] = fit.predict(d)
-    d['tau_hat'] = d['y'] - d['y0_hat']
-    rows = []
-    tr = d[d.treated == 1].copy()
-    for e, sub in tr.groupby('event_time'):
-        vals = sub.tau_hat.to_numpy(float)
-        rows.append({'event_time': int(e), 'estimate': float(vals.mean()), 'se': float(vals.std(ddof=1) / np.sqrt(len(vals))), 'n': len(vals), 'method': 'BJS imputation'})
-    return (pd.DataFrame(rows).sort_values('event_time'), d)
