@@ -1,5 +1,8 @@
 # Econometrics Notebook Library
 
+> **Portfolio case study:** [Contribution, public proof, claim boundaries and the next external-validation gate](docs/PORTFOLIO_CASE_STUDY.md).
+
+
 **Research-grade computational notes on modern applied econometrics.**
 
 **Author:** **Layan Oraidi** (also appearing in some award and academic records as **Layan Aloreidi**) · ORCID: https://orcid.org/0009-0005-0202-2582
