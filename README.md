@@ -2,6 +2,8 @@
 
 **Research-grade computational notes on modern applied econometrics.**
 
+**Author:** **Layan Oraidi** (also appearing in some award and academic records as **Layan Aloreidi**) · ORCID: https://orcid.org/0009-0005-0202-2582
+
 This is not a beginner tutorial repository. Each notebook follows the same discipline:
 
 > **intuition → estimand → derivation → simulation → implementation → failure mode → research checklist**
@@ -97,7 +99,7 @@ See [METHODS_SCOPE.md](METHODS_SCOPE.md).
 - Conley, T. G. (1999). *GMM Estimation with Cross Sectional Dependence*. Journal of Econometrics.
 - Goldsmith-Pinkham, P., Sorkin, I. & Swift, H. (2020). *Bartik Instruments: What, When, Why, and How*. American Economic Review.
 - Borusyak, K., Hull, P. & Jaravel, X. (2022). *Quasi-Experimental Shift-Share Research Designs*. Review of Economic Studies.
-- Abadie, A., Diamond, A. & Hainmueller, J. (2010). *Synthetic Control Methods for Comparative Case Studies*. JASA.
+- Abadie, A., Diamond, J. & Hainmueller, J. (2010). *Synthetic Control Methods for Comparative Case Studies*. JASA.
 - Jordà, Ò. (2005). *Estimation and Inference of Impulse Responses by Local Projections*. American Economic Review.
 
 Full bibliographic metadata is in [`references.bib`](references.bib).
@@ -109,6 +111,10 @@ The next release should add de Chaisemartin–D'Haultfœuille DiD, stacked/two-s
 ## Suggested CV line
 
 > **Creator, Econometrics Notebook Library** — Built an open, tested computational library deriving and simulating modern causal-inference and inference methods, including heterogeneous-treatment DiD/event studies, wild-cluster bootstrap, Conley spatial HAC, shift-share IV, synthetic control, randomization inference, and local projections.
+
+## Researcher
+
+See [`AUTHOR.md`](AUTHOR.md) for the canonical researcher identity and the Oraidi / Aloreidi name bridge used across public research records.
 
 ## License
 
