@@ -24,8 +24,8 @@ website:
           - notebooks/09_local_projections.ipynb
       - href: REPRODUCIBILITY.md
         text: Reproduce
-      - href: VALIDATION.md
-        text: Validation
+      - href: STATUS.md
+        text: Status
       - href: CONTRIBUTING.md
         text: Contribute
     right:
